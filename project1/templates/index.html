@@ -1,0 +1,18 @@
+
+{% block heading %}
+
+REGISTRATION
+
+{% endblock %}
+
+{% block body %}
+
+<form action="{{url_for('register')}}" method="post">
+    <label for="fname">ENTER NAME:</label>
+    <input type="text" name="name" placeholder="enter name">
+    <label for="fname1">PASSWORD:</label>
+    <input type="password" name="name" placeholder="enter password">
+    <button>Submit</button>
+</form>
+
+{% endblock %}
