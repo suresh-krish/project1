@@ -7,12 +7,15 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime as dt
 import csv
+from datetime import datetime as dt
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'postgres://sjdihkgayawirr:6d55f7ffac9a770752523bf08b31b8384cd95cbd63f1f936776c410e85406118@ec2-34-200-72-77.compute-1.amazonaws.com:5432/d7tbt9n8q5pp5m'
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
+db= SQLAlchemy()
 
 
 
@@ -42,3 +45,16 @@ def main():
 if __name__ == "__main__":
     with app.app_context():
         main()
+
+
+
+class User(db.Model):
+    __tablename__ = "user"
+    time=db.Column(db.DateTime,nullable=False)
+    email = db.Column(db.String(120),primary_key=True)
+    password = db.Column(db.String(80),nullable=False)
+
+    def __init__(self,email,password):
+        self.email = email
+        self.password=password
+        self.time=dt.now()

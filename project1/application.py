@@ -83,7 +83,7 @@ def auth():
                 session["email"]=mail
                 return render_template("account.html")
             else:
-                return "invalid password"
+                return render_template("login.html")
         else:
             return "No account associated with this password"
 
